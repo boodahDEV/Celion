@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">CrocoKey</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/tasks" routerLinkActive="active">none</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/private" routerLinkActive="active">none</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <ng-container *ngIf="!authService.logger(); else loggedIn">
+          <li class="nav-item">
+            <a class="nav-link" style="cursor: pointer;" routerLink="/signin" routerLinkActive="active">Iniciar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="cursor: pointer;" routerLink="/signup" routerLinkActive="active">Registrar</a>
+          </li>
+        </ng-container>
+        <ng-template #loggedIn>
+          <li class="nav-item">
+            <a class="nav-link" style="cursor: pointer;" (click)="authService.logout()" routerLinkActive="active">cerrar</a>
+          </li>
+        </ng-template>
+
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container p-5">
+  <router-outlet></router-outlet>
+</div>
