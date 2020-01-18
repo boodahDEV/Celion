@@ -8,4 +8,8 @@ const schemaChest = new Schema({
     codeKey: undefined, //El codigo de bloqueo del codigo temporal
     segments: Number //segmentos utilizados para el tipo de bloqueo
   }
-})
+},{
+  timestamps:true
+});
+
+module.exports = model('Chest',schemaChest);
