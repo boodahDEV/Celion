@@ -1,14 +1,14 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
 
-const schemaUser = new Schema({
-  _id: mongoose.Schema.Types.ObjectId,
+const schemaUser = new mongoose.Schema({
+  // _id: mongoose.Schema.Types.ObjectId,
   email:String,
   mainPass:String,
   name: {
       firstName: String,
       lastName: String
   },
-  profilePicture?: Buffer,
+  // profilePicture?: Buffer,
   chestKey: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Chest'
@@ -17,4 +17,4 @@ const schemaUser = new Schema({
   timestamps:true
 });
 
-module.exports = model('User',schemaUser);
+module.exports = mongoose.model('User',schemaUser);
