@@ -28,7 +28,7 @@ function saveDataTest() {
 
   baul.save(function(err) {
     if (err) throw err;
-    console.log('Chest successfully saved.');
+    console.log('[\x1b[32mChest\x1b[0m] -> Make \x1b[33msuccessfully\x1b[0m saved.');
 
     var usuarios = new user({
       email: "boodah.com",
@@ -41,19 +41,18 @@ function saveDataTest() {
     });
     usuarios.save(function(err) {
       if (err) throw err;
-      console.log('Users successfully saved.');
+      console.log('[\x1b[32mUser\x1b[0m]  -> \x1b[33mSuccessfully\x1b[0m saved.');
     })
 
   })
 }//fin test
 
-
-saveDataTest()
+// saveDataTest()
 
 /**
  *    TEST
  */
 
 user_access
-  .then(db => console.log("Database is connected!"))
+  .then(db => console.log("T800 -> [\x1b[32mconnected\x1b[0m]"))
   .catch(err => console.log(err));
