@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors') // modulo para la facil integracion entre el servidor de angular y node
+const database = require('./config/database');
 
 app.use(cors());
 app.use(express.json()); //Convierte los datos del servidor a objeto js
