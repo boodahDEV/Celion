@@ -18,7 +18,7 @@ router.post("/signup", (req, res) => {
         if (err) {
           throw res.status(401).send(err);
         } else {
-          var chestNew = CreateNewChest(rootKeyChest);
+          var chestNew = CreateNewChest(hash);
           chestNew.save(function(err) {
             if (err) throw err;
             console.log(
@@ -73,6 +73,6 @@ function verifyToken(req, res, next) {
 
 function CreateNewChest(key) {
   return new chest({
-    chest_Key: chest
+    chest_Key: key
   });
 }
