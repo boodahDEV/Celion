@@ -18,6 +18,30 @@ router.post("/signup", (req, res) => {
         if (err) {
           throw res.status(401).send(err);
         } else {
+          var chestNew = CreateNewChest(rootKeyChest);
+          chestNew.save(function(err) {
+            if (err) throw err;
+            console.log(
+              "[\x1b[32mChest\x1b[0m] -> Make \x1b[33msuccessfully\x1b[0m saved."
+            );
+
+            var usuarios = new user({
+              email: email,
+              mainPass: hash,
+              name:{
+                  firstName: firstname,
+                  lastName: lastname
+              },
+              chestKey: chestNew._id
+            });
+
+            usuarios.save(function(err) {
+              if (err) throw err;
+              console.log(
+                "[\x1b[32mUser\x1b[0m]  -> \x1b[33mSuccessfully\x1b[0m saved."
+              );
+            });
+          }); //end save chest
           res.status(200).send("save!");
         }
       });
