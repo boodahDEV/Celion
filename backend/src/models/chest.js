@@ -9,7 +9,7 @@ const schemaChest = new mongoose.Schema({
     segments: Number //segmentos utilizados para el tipo de bloqueo
   }],
   chest_Key: String, //El codigo de bloqueo del baul
-  single_access_key:String
+  single_access_key:String //codigo corto del baul
 },{
   timestamps:true
 });

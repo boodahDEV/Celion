@@ -7,51 +7,49 @@ const user = require("../models/users");
 const jwt = require("jsonwebtoken");
 
 router.get("/", (req, res) => res.send("HEllo word"));
-router.post("/signup", (req, res) => {
+router.post("/signup", async (req, res) => {
   const { email, password, firstname, lastname, rootKeyChest } = req.body;
 
-  bcrypt.genSalt(10, function(err, salt) {
+  await bcrypt.genSalt(10,async function(err, salt) {
     if (err) {
       throw res.status(401).send(err);
     } else {
-      bcrypt.hash(password, salt, function(err, hash) {
+    await bcrypt.hash(password, salt, async function(err, hash) {
         if (err) {
           throw res.status(401).send(err);
         } else {
           var chestNew = CreateNewChest(hash);
-          chestNew.save(function(err) {
+          await chestNew.save( async function(err) {
             if (err) throw err;
             console.log(
               "[\x1b[32mChest\x1b[0m] -> Make \x1b[33msuccessfully\x1b[0m saved."
             );
+            //send to frontend that chest create successfully
 
             var usuarios = new user({
               email: email,
               mainPass: hash,
-              name:{
-                  firstName: firstname,
-                  lastName: lastname
+              name: {
+                firstName: firstname,
+                lastName: lastname
               },
               chestKey: chestNew._id
             });
 
-            usuarios.save(function(err) {
+            await usuarios.save(function(err) {
               if (err) throw err;
               console.log(
                 "[\x1b[32mUser\x1b[0m]  -> \x1b[33mSuccessfully\x1b[0m saved."
               );
+              //send user create successfully
             });
           }); //end save chest
           res.status(200).send("save!");
         }
-      });
+      }); //end generate hash
     }
   });
-
-  //   generateKeyPassImput(req.body.password).then(resp=>{
-  //     console.log("--> ",resp)
-  //   });
-});
+}); //fin de la ruta /signup
 
 module.exports = router; // al final exporto las rutas al index principal
 
