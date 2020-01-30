@@ -1,55 +1,61 @@
 const { Router } = require("express");
-const bcrypt = require("bcrypt");
-const router = new Router();
-const chest = require("../models/chest");
-const user = require("../models/users");
-
+const { check, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 
-router.get("/", (req, res) => res.send("HEllo word"));
-router.post("/signup", async (req, res) => {
-  const { email, password, firstname, lastname, rootKeyChest } = req.body;
+const router = new Router();
 
-  await bcrypt.genSalt(10,async function(err, salt) {
-    if (err) {
-      throw res.status(401).send(err);
-    } else {
-    await bcrypt.hash(password, salt, async function(err, hash) {
-        if (err) {
-          throw res.status(401).send(err);
-        } else {
-          var chestNew = CreateNewChest(hash);
-          await chestNew.save( async function(err) {
-            if (err) throw err;
-            console.log(
-              "[\x1b[32mChest\x1b[0m] -> Make \x1b[33msuccessfully\x1b[0m saved."
-            );
-            //send to frontend that chest create successfully
+const chest = require("../models/chest");
+const user = require("../models/users");
+const crypto = require("../helper/crypto");
 
-            var usuarios = new user({
-              email: email,
-              mainPass: hash,
-              name: {
-                firstName: firstname,
-                lastName: lastname
-              },
-              chestKey: chestNew._id
-            });
+router.get("/", (req, res) => res.send("HEllo word")); //test Router
 
-            await usuarios.save(function(err) {
-              if (err) throw err;
-              console.log(
-                "[\x1b[32mUser\x1b[0m]  -> \x1b[33mSuccessfully\x1b[0m saved."
-              );
-              //send user create successfully
-            });
-          }); //end save chest
-          res.status(200).send("save!");
-        }
-      }); //end generate hash
+router.post(
+  "/signup",
+  [
+    check("email").isEmail(),
+    check("password").isLength({ min: 8 }),
+    check("firstname").notEmpty(),
+    check("lastname").notEmpty()
+  ],
+  async (req, res) => {
+    // Finds the validation errors in this request and wraps them in an object with handy functions
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
     }
-  });
-}); //fin de la ruta /signup
+
+    const keyPass = await crypto.generateKeyPassImput(req.body.password);
+
+    var chestNew = CreateNewChest(keyPass);
+    await chestNew.save(async function(err) {
+      if (err) return res.status(401).json({ errors: err });
+      console.log(
+        "[\x1b[32mChest\x1b[0m] -> Make \x1b[33msuccessfully\x1b[0m saved."
+      );
+      //send to frontend that chest create successfully
+
+      var usuarios = new user({
+        email: req.body.email,
+        mainPass: keyPass,
+        name: {
+          firstName: req.body.firstname,
+          lastName: req.body.lastname
+        },
+        chestKey: chestNew._id
+      });
+
+      await usuarios.save(function(err) {
+        if (err) return res.status(401).json({ errors: err });
+        console.log(
+          "[\x1b[32mUser\x1b[0m]  -> \x1b[33mSuccessfully\x1b[0m saved."
+        );
+        //send user create successfully
+      });
+    }); //end save chest
+    res.status(200).send("save!");
+  }
+); //fin de la ruta /signup
 
 module.exports = router; // al final exporto las rutas al index principal
 
