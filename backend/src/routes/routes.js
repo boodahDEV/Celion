@@ -27,6 +27,14 @@ router.post(
 
     const keyPass = await crypto.generateKeyPassImput(req.body.password);
 
+    /**
+     * 
+     * En los inicio, el chest_Key sera el mismo que la contrasena de secion
+     * ya que tengo planeado que tenga un baul publico (con la misma pass que el login) y 
+     * el baul privado (con una key generada por el sistema de 6 digitos!)
+     * 
+     */
+
     var chestNew = CreateNewChest(keyPass);
     await chestNew.save(async function(err) {
       if (err) return res.status(401).json({ errors: err });
