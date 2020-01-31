@@ -1,17 +1,24 @@
 const mongoose = require("mongoose");
-
+const uri = "mongodb://localhost/T800";
 mongoose
-  .connect("mongodb://localhost/T800", {
+  .connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
   .then(db => {
     if (db.Connection.STATES.connected)
-      console.log("\x1b[42mT800\x1b[0m -> [\x1b[32mconnected\x1b[0m]");
-    // else console.log("\x1b[41mT800\x1b[0m -> [\x1b[31mdisconnected\x1b[0m]");
+      console.log("\x1b[42mT800\x1b[0m -> [\x1b[32mconnected successfully\x1b[0m]");
+
   })
   .catch(err => console.log(err));
 
+
+  mongoose.connection.on('connected',_=>{
+    console.log("\x1b[42mDatabase\x1b[0m -> [\x1b[32mconnected to services\x1b[0m]");
+  })
+  mongoose.connection.on('disconnected',err=>{
+    console.log("\x1b[41mDatabase\x1b[0m -> [\x1b[31mdisconnected to services\x1b[0m]");
+  })
 /**
  *    TEST
  */
