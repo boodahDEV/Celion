@@ -5,8 +5,8 @@ const database = require('./config/database');
 
 app.use(cors());
 app.use(express.json()); //Convierte los datos del servidor a objeto js
-app.use('/api',require('./routes/routes'))
-// app.set('port',process.env.PORT || 3300);
+app.use('/api', require('./routes/routes'))
+    // app.set('port',process.env.PORT || 3300);
 app.listen(3300);
 console.log('*******************************************************')
 console.log('Starting and gathering information on -> [\x1b[32mcrocoKEY\x1b[0m] ...')
