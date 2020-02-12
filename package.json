@@ -1,14 +1,15 @@
 {
-  "name": "frontend",
-  "version": "0.0.0",
+  "name": "crocoKEY",
+  "version": "0.20.10",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "start-view": "ng serve",
+    "dev-server": "NODE_KEY_TOKEN=SARAH nodemon src/server/index.js"
   },
+  "author": "boodah",
+  "license": "Apache License 2.0",
   "private": true,
   "dependencies": {
     "@angular/animations": "~8.2.14",
@@ -21,16 +22,22 @@
     "@angular/router": "~8.2.14",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.9.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-validator": "^6.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.8.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.803.21",
+    "@angular-devkit/build-angular": "^0.900.1",
     "@angular/cli": "~8.3.21",
     "@angular/compiler-cli": "~8.2.14",
     "@angular/language-service": "~8.2.14",
-    "@types/node": "~8.9.4",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -39,6 +46,7 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
+    "nodemon": "^2.0.2",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
