@@ -3,6 +3,8 @@ Este repositorio es para desarrollar una Web-app con el stack ~> MEAN (Mongodb, 
 con el fin que " **croco KEY** " (app final) sea mi administrador personal de contraseñas, implementando SHA-256 y alguillo
 mas para parametrizar y garantizar que el almacenamiento de mis contraseñas (todas en general) no se vean vulneradas de ciertamanera.
 
+
+
 ## Instalacion 
 
 PRIMERO QUE TODO TENER CADA UNO DEL STACK MEAN (MongoDB, AngularCLI, NodeJS)
@@ -32,25 +34,31 @@ boodah@ElRond:~$ npm install -g @angular/cli
 
 * ##### Tomando en cuenta comandos basicos de ejecucion de proyectos con NPM  (tanto dentro del backend como en el frontend) => =>
 ```console
-boodah@ElRond:~/GitHub/Celion/backend$  npm i
-boodah@ElRond:~/GitHub/Celion/frontend$  npm i 
+boodah@ElRond:~/GitHub/Celion/$  npm i
++ Si da algun tipo de errores por vulnerabilidades simplemente usa -> npm audit fix --force
 ```
+
+
 
  ## Ejecucion 
  * ##### Levantar el backend 
-    * En un terminal posicionarse dentro de la carpeta de backend ejecutar el siguiente comando:
+    * En un terminal ejecutar el siguiente comando:
     ```console
-    boodah@ElRond:~/GitHub/Celion/backend$ npm run dev
+    boodah@ElRond:~/GitHub/Celion/$ npm run dev-server
     ```
     * En otra terminal levantamos mongoDB para poder conectarnos a la base de datos:
     ```console
-    boodah@ElRond:~/GitHub/Celion/backend$ mongod
+    +  Si es el caso de que no este activo el servicio
+    boodah@ElRond:~/GitHub/Celion/$ mongod
+    + Igualmente el servidor al levantar muestra informacion si lo esta o no.
     ```
  * ##### Frontend
     * EL forntend no esta siendo trabajado aun, pero su ejecucion corresponde a un proyecto en angular comun:
     ```console
-    boodah@ElRond:~/GitHub/Celion/frontend$ ng serve
+    boodah@ElRond:~/GitHub/Celion/$ npm run start-view
     ```
+    
+
     
 ## Funcionamiento
 El principal funcionamiento que se quiere lograr con **crocoKEY** es ser un administrador de contraseñas general
@@ -63,7 +71,7 @@ de las claves alojadas no se efectue con exito.
 
 
 ```diff
-# Version actual: 0.20.05
+# Version actual: 0.20.10
 # Las solicitudes de extracción y aportes al desarrollo son bienvenidas.
 # boodah
 ```
