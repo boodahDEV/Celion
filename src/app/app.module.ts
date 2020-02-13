@@ -6,11 +6,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
-import { TasksComponent } from './components/tasks/tasks.component';
-import { PrivateTasksComponent } from './components/private-tasks/private-tasks.component';
+
 import {FormsModule} from '@angular/forms'
 import { AuthGuard } from "./auth.guard";
 import { TokenInterceptorService } from "./services/token-interceptor.service";
+
+import { ChestComponent } from './components/chest/chest.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SettingComponent } from './components/setting/setting.component';
+import { PrivateChestsComponent } from './components/private-chests/private-chests.component';
 
 
 @NgModule({
@@ -18,8 +22,10 @@ import { TokenInterceptorService } from "./services/token-interceptor.service";
     AppComponent,
     SignupComponent,
     SigninComponent,
-    TasksComponent,
-    PrivateTasksComponent
+    ChestComponent,
+    DashboardComponent,
+    SettingComponent,
+    PrivateChestsComponent
   ],
   imports: [
     BrowserModule,

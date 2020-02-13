@@ -1,21 +1,30 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container">
-    <a class="navbar-brand" routerLink="/">CrocoKey</a>
+    <img src="../assets/imagesVALIDA (1).png" routerLink="/dashboard">
+    <a class="navbar-brand" routerLink="/dashboard"> crocoKey</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Principal</a>
+        </li> -->
         <li class="nav-item">
-          <a class="nav-link" routerLink="/tasks" routerLinkActive="active">none</a>
+          <a class="nav-link" routerLink="/chest" routerLinkActive="active">Baules</a>
         </li>
+        <ng-container *ngIf="auth.logger()">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/private-chest" routerLinkActive="active">Baules privados</a>
+          </li>
+        </ng-container>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/private" routerLinkActive="active">none</a>
+          <a class="nav-link" routerLink="/settings" routerLinkActive="active">Configuraciones</a>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-        <ng-container *ngIf="!authService.logger(); else loggedIn">
+        <ng-container *ngIf="!auth.logger(); else loggedIn">
           <li class="nav-item">
             <a class="nav-link" style="cursor: pointer;" routerLink="/signin" routerLinkActive="active">Iniciar</a>
           </li>
@@ -25,7 +34,7 @@
         </ng-container>
         <ng-template #loggedIn>
           <li class="nav-item">
-            <a class="nav-link" style="cursor: pointer;" (click)="authService.logout()" routerLinkActive="active">cerrar</a>
+            <a class="nav-link" style="cursor: pointer;" (click)="auth.logout()" routerLinkActive="active">cerrar</a>
           </li>
         </ng-template>
 

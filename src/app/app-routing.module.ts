@@ -1,25 +1,35 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TasksComponent } from './components/tasks/tasks.component'
-import { PrivateTasksComponent } from './components/private-tasks/private-tasks.component'
-import { SigninComponent } from './components/signin/signin.component'
-import { SignupComponent } from './components/signup/signup.component'
 import { AuthGuard } from "./auth.guard";
 
+import { SigninComponent } from './components/signin/signin.component'
+import { SignupComponent } from './components/signup/signup.component'
+import { SettingComponent } from "./components/setting/setting.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { ChestComponent } from "./components/chest/chest.component";
+import { PrivateChestsComponent } from "./components/private-chests/private-chests.component";
 
 const routes: Routes = [
   {
     path:'',
-    redirectTo:'/tasks',
+    redirectTo:'/dashboard',
     pathMatch: 'full'
   },
   {
-    path:'tasks',
-    component:TasksComponent
+    path:'settings',
+    component:SettingComponent
   },
   {
-    path:'private',
-    component:PrivateTasksComponent,
+    path:'dashboard',
+    component:DashboardComponent
+  },
+  {
+    path:'chest',
+    component:ChestComponent
+  },
+  {
+    path:'private-chest',
+    component:PrivateChestsComponent,
     canActivate:[AuthGuard]
   },
   {
