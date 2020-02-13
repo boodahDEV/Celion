@@ -1,18 +1,26 @@
 <div class="row">
-    <div class="col-md-4 mx-auto">
-        <div class="card">
+    <div class="col-md-6 mx-auto">
+        <div class="card border-primary">
             <div class="card-header">
-                Sign Up
+                Registrarse 
             </div>
             <div class="card-body">
                 <form (submit)="signup()">
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <input type="text" name="firstname" class="form-control" placeholder="Nombre" required autofocus [(ngModel)]="user.firstname">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="lastname" class="form-control" placeholder="Aplellido" required [(ngModel)]="user.lastname">
+                        </div>
+                    </div>
                     <div class="form-group">
-                        <input type="email" name="email" class="form-control" placeholder="Email" required autofocus [(ngModel)]="user.email">
+                        <input type="email" name="email" class="form-control" placeholder="Email" required [(ngModel)]="user.email">
                     </div>
                     <div class="form-group">
                         <input type="password" name="password" class="form-control" placeholder="Password" required [(ngModel)]="user.password">
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                    <button type="submit" class="btn btn-primary btn-block">Registrar</button>
                 </form>
             </div>
         </div>
