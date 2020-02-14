@@ -11,17 +11,17 @@
         <!-- <li class="nav-item">
           <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Principal</a>
         </li> -->
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/chest" routerLinkActive="active">Baules</a>
-        </li>
         <ng-container *ngIf="auth.logger()">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/chest" routerLinkActive="active">Baules</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/private-chest" routerLinkActive="active">Baules privados</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/settings" routerLinkActive="active">Configuraciones</a>
+          </li>
         </ng-container>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/settings" routerLinkActive="active">Configuraciones</a>
-        </li>
       </ul>
       <ul class="navbar-nav ml-auto">
         <ng-container *ngIf="!auth.logger(); else loggedIn">

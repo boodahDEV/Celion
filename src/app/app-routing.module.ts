@@ -17,7 +17,8 @@ const routes: Routes = [
   },
   {
     path:'settings',
-    component:SettingComponent
+    component:SettingComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'dashboard',
@@ -25,7 +26,8 @@ const routes: Routes = [
   },
   {
     path:'chest',
-    component:ChestComponent
+    component:ChestComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'private-chest',
