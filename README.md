@@ -71,7 +71,10 @@ de las claves alojadas no se efectue con exito.
 
 
 ```diff
-# Version actual: 0.20.10
+# Version actual: 0.20.12
++ Esta versión engloba cambios en los accesos a baules directamente en el servidor, metiendole musculo poco 
++ a poco para asi garantizar que los baules sean si y solo si de acceso unico por parte de su creador.
+
 # Las solicitudes de extracción y aportes al desarrollo son bienvenidas.
 # boodah
 ```
