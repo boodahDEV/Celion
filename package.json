@@ -1,12 +1,12 @@
 {
   "name": "crocoKEY",
-  "version": "0.20.10",
+  "version": "0.20.12",
   "description": "",
   "main": "index.js",
   "scripts": {
     "ng": "ng",
     "start-view": "ng serve",
-    "dev-server": "NODE_KEY_TOKEN=SARAH nodemon src/server/index.js"
+    "dev-server": "nodemon src/server/index.js"
   },
   "author": "boodah",
   "license": "Apache License 2.0",
