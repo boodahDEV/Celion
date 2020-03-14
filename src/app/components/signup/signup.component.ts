@@ -25,7 +25,7 @@ export class SignupComponent implements OnInit {
   }
 
   signup(){
-    if(this.verifica == this.user.password){
+    if(this.user.password == this.verifica){
       this.authService.signUp(this.user).subscribe(resp=>{
         console.log(resp)
         localStorage.setItem('token',resp.token)
@@ -33,6 +33,7 @@ export class SignupComponent implements OnInit {
       },err =>{ console.log(err)})
     }else{
       this.labelErrorVerify = true
+      this.verifica = ""
     }
   }
 }
