@@ -14,18 +14,25 @@ export class SignupComponent implements OnInit {
     lastname:'',
     password:''
   }
-  constructor(private authService: AuthService, private router: Router) {
+  verifica: string
+  labelErrorVerify: boolean
 
+  constructor(private authService: AuthService, private router: Router) {
+    this.labelErrorVerify = false
    }
 
   ngOnInit() {
   }
 
   signup(){
-    this.authService.signUp(this.user).subscribe(resp=>{
-      console.log(resp)
-      localStorage.setItem('token',resp.token)
-      this.router.navigate(['/private/'])
-    },err =>{ console.log(err)})
+    if(this.verifica == this.user.password){
+      this.authService.signUp(this.user).subscribe(resp=>{
+        console.log(resp)
+        localStorage.setItem('token',resp.token)
+        this.router.navigate(['/chest/'])
+      },err =>{ console.log(err)})
+    }else{
+      this.labelErrorVerify = true
+    }
   }
 }
