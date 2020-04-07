@@ -8,6 +8,7 @@ const schemaUser = new mongoose.Schema({
       firstName: String,
       lastName: String
   },
+  validateEmail:Boolean,
   // profilePicture?: Buffer,
   chestKey: {
     type: mongoose.Schema.Types.ObjectId,

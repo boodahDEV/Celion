@@ -5,7 +5,7 @@ const crypto = require("../../helper/crypto");
 const jwt = require("jsonwebtoken");
 const secret = require("../../config/config").secret;
 
-async function signin(req, res) {
+async function signup(req, res) {
   const keyPass = await crypto.generateKeyPassImput(req.body.password);
   /**
    *
@@ -30,6 +30,7 @@ async function signin(req, res) {
         firstName: req.body.firstname,
         lastName: req.body.lastname
       },
+      validateEmail: false, // opcion de validacion validando su registro//     #+ PRONTO +#
       chestKey: chestNew._id
     });
 
@@ -37,9 +38,11 @@ async function signin(req, res) {
       if (err) return res.status(401).json({
         errors: err
       });
+      console.log(`[\x1b[41mUser\x1b[0m]  -> \x1b[44m ${usuarios._id} \x1b[0m -> \x1b[41mNOT VALIDATE EMAIL!\x1b[0m `);
       console.log("[\x1b[32mUser\x1b[0m]  -> \x1b[33mSuccessfully\x1b[0m saved.");
       const token = jwt.sign({
-        _id: usuarios._id
+        _id: usuarios._id,
+        check:  true
       }, secret);
       res.status(200).send({
         token
@@ -55,4 +58,4 @@ function CreateNewChest(key) {
   });
 }
 
-exports.signup = signin;
+exports.signup = signup;

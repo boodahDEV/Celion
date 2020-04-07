@@ -6,24 +6,26 @@ const router = new Router();
 const signup = require("./auth/signup").signup;
 const signin = require("./auth/signin").signin;
 
-router.get("/", (req, res) => res.send("HEllo word")); //test Router
+// router.get("/", (req, res) => redir ); //test Router
+
+
 
 router.post(
   "/signup",
   [
     check("email").isEmail(),
     check("password").isLength({
-      min: 8
+      min: 8,
     }),
     check("firstname").notEmpty(),
-    check("lastname").notEmpty()
+    check("lastname").notEmpty(),
   ],
   async (req, res) => {
     // Finds the validation errors in this request and wraps them in an object with handy functions
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({
-        errors: errors.array()
+        errors: errors.array(),
       });
     }
     /**AQUI VA ALGO RESPECTO AL REGISTRO */
@@ -31,20 +33,22 @@ router.post(
   }
 ); //fin de la ruta /signup
 
+
+
 router.post(
   "/signin",
   [
     check("email").isEmail(),
     check("password").isLength({
-      min: 8
-    })
+      min: 8,
+    }),
   ],
   async (req, res) => {
     // Finds the validation errors in this request and wraps them in an object with handy functions
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({
-        errors: errors.array()
+        errors: errors.array(),
       });
     }
     /**AQUI VA ALGO RESPECTO AL LOGIN */
