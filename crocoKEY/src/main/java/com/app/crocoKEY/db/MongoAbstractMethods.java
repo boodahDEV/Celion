@@ -1,4 +1,4 @@
-package com.app.crocoKEY;
+package com.app.crocoKEY.db;
 
 import java.util.List;
 import org.bson.Document;

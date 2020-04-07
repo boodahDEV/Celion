@@ -30,7 +30,7 @@ export class SignupComponent implements OnInit {
         console.log(resp)
         localStorage.setItem('token',resp.token)
         this.router.navigate(['/chest/'])
-      },err =>{ console.log(err)})
+      },err =>{ console.log(err)}) //lanza error cuando no se puede conectar al server por la URL 
     }else{
       this.labelErrorVerify = true
       this.verifica = ""

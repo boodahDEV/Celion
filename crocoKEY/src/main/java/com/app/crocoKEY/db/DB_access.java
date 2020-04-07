@@ -1,4 +1,4 @@
-package com.app.crocoKEY;
+package com.app.crocoKEY.db;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ public class DB_access implements MongoAbstractMethods {
 		Logger mongoLogger = Logger.getLogger("org.mongodb.driver");
 		mongoLogger.setLevel(Level.SEVERE); // Esto elimina el log que genera el mongo driver de java
 
-//            getAllDatabase(mongoClient).forEach(db -> System.out.println(db.toJson()));
+            getAllDatabase(getMongoClient()).forEach(db -> System.out.println(db.toJson()));
 
 //			Document student = new Document("_id", new ObjectId());
 //			student.append("student_name", "boodah3").append("class_id", 1d).append("scores", "Data with very instance");
