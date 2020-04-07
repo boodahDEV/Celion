@@ -20,15 +20,17 @@
     "@angular/platform-browser": "~9.0.0",
     "@angular/platform-browser-dynamic": "~9.0.0",
     "@angular/router": "~9.0.0",
-    "rxjs": "~6.5.4",
-    "tslib": "^1.10.0",
-    "zone.js": "~0.10.2",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-validator": "^6.3.1",
+    "firebase": "^7.13.2",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.8.4"
+    "mongoose": "^5.8.4",
+    "nodemailer": "^6.4.6",
+    "rxjs": "~6.5.4",
+    "tslib": "^1.10.0",
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.900.1",

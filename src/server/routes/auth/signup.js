@@ -38,8 +38,8 @@ async function signup(req, res) {
       if (err) return res.status(401).json({
         errors: err
       });
-      console.log(`[\x1b[41mUser\x1b[0m]  -> \x1b[44m ${usuarios._id} \x1b[0m -> \x1b[41mNOT VALIDATE EMAIL!\x1b[0m `);
       console.log("[\x1b[32mUser\x1b[0m]  -> \x1b[33mSuccessfully\x1b[0m saved.");
+      console.log(`[\x1b[41mUser\x1b[0m]  -> \x1b[44m ${usuarios._id} \x1b[0m -> \x1b[41mNOT VALIDATE EMAIL!\x1b[0m `);
       const token = jwt.sign({
         _id: usuarios._id,
         check:  true
