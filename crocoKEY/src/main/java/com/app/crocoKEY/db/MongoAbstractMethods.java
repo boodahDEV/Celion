@@ -13,4 +13,7 @@ public interface MongoAbstractMethods {
 	public String setDataInCollections(String nameCollection, Object dataDocument, Object database);
 	public MongoDatabase getDatabase(String nameDatabase);
 	public MongoClient getMongoClient();
+	public String deleteOneData(String nameCollection, Object dataDocument, Object database);
+	public String updateOneData(String nameCollection, Object dataDocument, Object dataUpdateNew, Object database);
+	public List<Document> read(String nameCollection, Object dataForFindDocument, Object database);
 }
