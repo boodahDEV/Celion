@@ -1,7 +1,5 @@
 package com.app.crocoKEY.gui;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -16,17 +14,19 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.border.MatteBorder;
+
+import com.app.crocoKEY.panels.*;
+
 import javax.swing.SwingConstants;
 import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
 
 public class crocoKEY extends JFrame {
 
 	private JPanel contentPane;
+	public JPanel titlebar, dashboard,centerPanel;
+	public JButton exit;
 	public int x,y,xx,yy;
-	private JTextField jtfuser;
-	private JPasswordField jpfpass;
+
 
 	//CONSTRUCTOR
 	public crocoKEY(String titulo, String ver) {
@@ -39,7 +39,7 @@ public class crocoKEY extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel titlebar = new JPanel();
+		titlebar = new JPanel();
 		titlebar.setBackground(new Color(255, 255, 255));
 		titlebar.setBorder(new MatteBorder(1, 0, 0, 1, (Color) new Color(60, 179, 113)));
 		titlebar.addMouseListener(new MouseAdapter() {
@@ -59,7 +59,7 @@ public class crocoKEY extends JFrame {
 			}
 		});
 		
-		JPanel dashboard = new JPanel();
+		dashboard = new JPanel();
 		dashboard.setBackground(new Color(60, 179, 113));
 		dashboard.setBounds(0, 0, 200, 375);
 		contentPane.add(dashboard);
@@ -87,7 +87,7 @@ public class crocoKEY extends JFrame {
 		contentPane.add(titlebar);
 		titlebar.setLayout(null);
 		
-		JButton exit = new JButton("");
+		exit = new JButton("");
 		exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
@@ -101,60 +101,23 @@ public class crocoKEY extends JFrame {
 		exit.setBounds(452, 3, 26, 26);
 		titlebar.add(exit);
 		
-		JPanel centerPanel = new JPanel();
+		//200, 30, 280, 345
+		
+		centerPanel = new JPanel();
 		centerPanel.setBackground(new Color(255, 255, 255));
 		centerPanel.setBorder(new MatteBorder(0, 0, 1, 1, (Color) new Color(60, 179, 113)));
 		centerPanel.setBounds(200, 30, 280, 345);
 		contentPane.add(centerPanel);
 		centerPanel.setLayout(null);
+
+		/**
+		 * Load Login interface
+		 * */
+		new ChangePanel(centerPanel , new PanelLogin(centerPanel, getUI()));
 		
-		jtfuser = new JTextField("");
-		jtfuser.setForeground(new Color(69, 69, 69));
-		jtfuser.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(60, 179, 113)));
-//		jtfuser.setFocusable(false);
-		jtfuser.setHorizontalAlignment(SwingConstants.LEFT);
-		jtfuser.setFont(new Font("Consolas", Font.PLAIN, 15));
-		jtfuser.setBounds(79, 90, 150, 30);
-		centerPanel.add(jtfuser);
-		jtfuser.setColumns(10);
-		
-		jpfpass = new JPasswordField("");
-		jpfpass.setForeground(new Color(69, 69, 69));
-//		jpfpass.setFocusable(false);
-		jpfpass.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(60, 179, 113)));
-		jpfpass.setFont(new Font("Consolas", Font.PLAIN, 15));
-		jpfpass.setEchoChar('*');
-		jpfpass.setBounds(79, 151, 150, 30);
-		centerPanel.add(jpfpass);
-		
-		JLabel iconUser = new JLabel("");
-		iconUser.setIcon(new ImageIcon(crocoKEY.class.getResource("/com/app/crocoKEY/assets/user.png")));
-		iconUser.setBounds(45, 86, 30, 30);
-		centerPanel.add(iconUser);
-		
-		JLabel iconPass = new JLabel("");
-		iconPass.setIcon(new ImageIcon(crocoKEY.class.getResource("/com/app/crocoKEY/assets/pass.png")));
-		iconPass.setBounds(50, 146, 24, 30);
-		centerPanel.add(iconPass);
-		
-		MaterialButton jbiniciar = new MaterialButton();
-		jbiniciar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				//llamar a la funcion de login
-			}
-		});
-		jbiniciar.setColorHover(new Color(60, 179, 113));
-		jbiniciar.setColorNormal(new Color(60, 179, 113));
-		jbiniciar.setColorPressed(new Color(60, 179, 113));
-		jbiniciar.setText("Iniciar");
-		jbiniciar.setBounds(97, 216, 106, 35);
-		centerPanel.add(jbiniciar);
-		
-		JLabel tituloInit = new JLabel("Iniciar sesion");
-		tituloInit.setForeground(new Color(60, 179, 113));
-		tituloInit.setHorizontalAlignment(SwingConstants.CENTER);
-		tituloInit.setFont(new Font("Consolas", Font.BOLD, 20));
-		tituloInit.setBounds(30, 30, 237, 30);
-		centerPanel.add(tituloInit);
+	}
+	
+	public crocoKEY getUI() {
+		return this;
 	}
 }

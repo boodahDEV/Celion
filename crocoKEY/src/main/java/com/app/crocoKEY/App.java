@@ -13,7 +13,7 @@ public class App {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					crocoKEY frame = new crocoKEY("crocoKEY","v0.20.3");
+					crocoKEY frame = new crocoKEY("crocoKEY","v0.20.4");
 					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
