@@ -20,7 +20,10 @@ import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
 
 import com.app.crocoKEY.gui.MaterialButton;
+import com.app.crocoKEY.gui.Register;
 import com.app.crocoKEY.gui.crocoKEY;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class PanelRegister extends JPanel {
 	
@@ -40,6 +43,16 @@ public class PanelRegister extends JPanel {
 		setSize(280, 345);
 		
 		jtfNombre = new JTextField("Nombre");
+		jtfNombre.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent evt) { 
+				if (!Character.isLetter(evt.getKeyChar()) &&
+		                !(evt.getKeyChar() == KeyEvent.VK_SPACE) &&
+		                 !(evt.getKeyChar() == KeyEvent.VK_BACK_SPACE)) {
+					evt.consume();
+				}
+			}
+		});
 		jtfNombre.setForeground(new Color(158,158,158));
 		jtfNombre.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(60, 179, 113)));
 		jtfNombre.addFocusListener(new FocusListener() {
@@ -79,6 +92,16 @@ public class PanelRegister extends JPanel {
 		jtfNombre.setColumns(10);
 		
 		jtfApellido = new JTextField("Apellido");
+		jtfApellido.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent evt) { 
+				if (!Character.isLetter(evt.getKeyChar()) &&
+		                !(evt.getKeyChar() == KeyEvent.VK_SPACE) &&
+		                 !(evt.getKeyChar() == KeyEvent.VK_BACK_SPACE)) {
+					evt.consume();
+				}
+			}
+		});
 		jtfApellido.addFocusListener(new FocusListener() {
 		    @Override
 		    public void focusGained(FocusEvent e) {
@@ -106,7 +129,7 @@ public class PanelRegister extends JPanel {
 		jtfApellido.setFont(new Font("Consolas", Font.PLAIN, 15));
 		jtfApellido.setColumns(10);
 		jtfApellido.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(60, 179, 113)));
-		jtfApellido.setBounds(64, 85, 173, 25);
+		jtfApellido.setBounds(64, 82, 173, 25);
 		add(jtfApellido);
 		
 		JLabel iconEmail = new JLabel("");
@@ -204,7 +227,12 @@ public class PanelRegister extends JPanel {
 		MaterialButton jbRegistrar = new MaterialButton();
 		jbRegistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//llamar a la funcion de login
+				//llamar a la funcion de registro
+				if( !jtfNombre.getText().isEmpty() && !jtfApellido.getText().isEmpty()  && !jtfEmail.getText().isEmpty() && !jpfPassConfirm.isEnabled()) {
+					char[] passconfirm = jpfPassConfirm.getPassword();
+					Register rg = new Register(jtfNombre.getText(), jtfApellido.getText(), jtfEmail.getText(), String.valueOf(passconfirm));
+					rg.start();
+				}
 			}
 		});
 		jbRegistrar.setColorHover(new Color(60, 179, 113));
