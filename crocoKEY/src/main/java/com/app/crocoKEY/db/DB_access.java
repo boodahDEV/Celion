@@ -19,16 +19,6 @@ public class DB_access implements MongoAbstractMethods {
 	public DB_access() {
 		Logger mongoLogger = Logger.getLogger("org.mongodb.driver");
 		mongoLogger.setLevel(Level.SEVERE); // Esto elimina el log que genera el mongo driver de java
-
-//          Document find = new Document("email", "boodah.dev.721@gmail.com");
-//          read("users", find,getDatabase("T800"));
-//          getAllDatabase(getMongoClient()).forEach(db -> System.out.println(db.toJson()));
-//			student.append("student_name", "boodah3").append("class_id", 1d).append("scores", "Data with very instance");
-//			setDataInCollections("users", student, getDatabase("T800"));
-//			Document student2 = new Document("_id", new ObjectId());
-//			student2.append("student_name", "boodah4").append("class_id", 1d).append("scores", "Data with very instance");
-//			setDataInCollections("users", student2, getDatabase("T800"));
-
 	}// fin clase
 
 	@Override
