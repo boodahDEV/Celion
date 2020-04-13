@@ -39,7 +39,7 @@ async function signup(req, res) {
         errors: err
       });
       console.log("[\x1b[32mUser\x1b[0m]  -> \x1b[33mSuccessfully\x1b[0m saved.");
-      console.log(`[\x1b[41mUser\x1b[0m]  -> \x1b[44m ${usuarios._id} \x1b[0m -> \x1b[41mNOT VALIDATE EMAIL!\x1b[0m `);
+      console.log(`[\x1b[41mUser\x1b[0m]  -> \x1b[44m ${usuarios._id} \x1b[0m -> \x1b[41m EMAIL UNVALIDATED!\x1b[0m `);
       const token = jwt.sign({
         _id: usuarios._id,
         check:  true
