@@ -30,6 +30,8 @@ public class Register extends Thread{
 			result = db.setDataInCollections("users", dataRegister, db.getDatabase("T800"));
 			db = null;
 			System.gc();
+	    }catch(Exception e) {
+	    	System.out.println("No connected!");
 	    }finally {
 	       t1 = System.currentTimeMillis();
 	    }				

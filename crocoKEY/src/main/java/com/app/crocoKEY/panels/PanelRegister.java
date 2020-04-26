@@ -233,7 +233,7 @@ public class PanelRegister extends JPanel {
 					Register rg = new Register(jtfNombre.getText(), jtfApellido.getText(), jtfEmail.getText(), String.valueOf(passconfirm));
 					rg.start();
 					while(rg.isAlive()) {
-						System.out.println("Time: "+rg.getTimeExcecutingThread());
+						//System.out.println("Time: "+rg.getTimeExcecutingThread());
 					}
 					System.out.println(rg.getStatusDB());
 					//enviar mensaje de validacion de exito!

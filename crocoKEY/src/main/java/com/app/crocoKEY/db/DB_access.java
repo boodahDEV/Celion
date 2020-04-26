@@ -8,6 +8,8 @@ import java.util.logging.Logger;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
@@ -19,6 +21,14 @@ public class DB_access implements MongoAbstractMethods {
 	public DB_access() {
 		Logger mongoLogger = Logger.getLogger("org.mongodb.driver");
 		mongoLogger.setLevel(Level.SEVERE); // Esto elimina el log que genera el mongo driver de java
+		
+		 try{
+
+	            DBObject ping = new BasicDBObject("ping", "1");
+	            mongoTemplate.getDb().getMongo().getDB("DATABASE NAME").command(ping);
+	        } catch (Exception exp){
+	            // MongoDb is down..
+	        }
 	}// fin clase
 
 	@Override

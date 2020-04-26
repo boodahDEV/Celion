@@ -81,7 +81,7 @@ public class crocoKEY extends JFrame {
 		version.setHorizontalAlignment(SwingConstants.LEFT);
 		version.setForeground(Color.WHITE);
 		version.setFont(new Font("Consolas", Font.BOLD, 15));
-		version.setBounds(3, 356, 62, 19);
+		version.setBounds(3, 356, 81, 19);
 		dashboard.add(version);
 		titlebar.setBounds(0, 0, 480, 30);
 		contentPane.add(titlebar);
