@@ -1,48 +1,100 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container">
-    <img src="../assets/imagesVALIDA (1).png" routerLink="/dashboard">
-    <a class="navbar-brand" routerLink="/dashboard"> crocoKey</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <!-- <li class="nav-item">
-          <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Principal</a>
-        </li> -->
-        <ng-container *ngIf="auth.logger()">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/chest" routerLinkActive="active">Baules</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/private-chest" routerLinkActive="active">Baules privados</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/settings" routerLinkActive="active">Configuraciones</a>
-          </li>
-        </ng-container>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-        <ng-container *ngIf="!auth.logger(); else loggedIn">
-          <li class="nav-item">
-            <a class="nav-link" style="cursor: pointer;" routerLink="/signin" routerLinkActive="active">Iniciar</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="cursor: pointer;" routerLink="/signup" routerLinkActive="active">Registrar</a>
-          </li>
-        </ng-container>
-        <ng-template #loggedIn>
-          <li class="nav-item">
-            <a class="nav-link" style="cursor: pointer;" (click)="auth.logout()" routerLinkActive="active">cerrar</a>
-          </li>
-        </ng-template>
+<nb-layout>
+  <nb-layout-header fixed>
+    <!-- Insert header here -->
+    <nav class="col-md-12 navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container">
 
+        
+        <button nbButton ghost> <img src="../assets/imagesVALIDA (1).png" style="text-decoration:none;" routerLink="/dashboard"/></button>
+        <button nbButton ghost> <a style="text-decoration:none;cursor:pointer;" routerLink="/dashboard" > crocoKey</a></button>
 
-      </ul>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <!-- <li class="nav-item">
+            <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Principal</a>
+          </li> -->
+            <ng-container *ngIf="auth.logger()">
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  routerLink="/chest"
+                  routerLinkActive="active"
+                  >Baules</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  routerLink="/private-chest"
+                  routerLinkActive="active"
+                  >Baules privados</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  routerLink="/settings"
+                  routerLinkActive="active"
+                  >Configuraciones</a
+                >
+              </li>
+            </ng-container>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <ng-container *ngIf="!auth.logger(); else loggedIn">
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  style="cursor: pointer;"
+                  routerLink="/signin"
+                  routerLinkActive="active"
+                  >Iniciar</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  style="cursor: pointer;"
+                  routerLink="/signup"
+                  routerLinkActive="active"
+                  >Registrar</a
+                >
+              </li>
+            </ng-container>
+            <ng-template #loggedIn>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  style="cursor: pointer;"
+                  (click)="auth.logout()"
+                  routerLinkActive="active"
+                  >cerrar</a
+                >
+              </li>
+            </ng-template>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </nb-layout-header>
+  <nb-layout-column>
+    <div class="container p-5">
+      <router-outlet></router-outlet>
     </div>
-  </div>
-</nav>
-<div class="container p-5">
-  <router-outlet></router-outlet>
-</div>
+  </nb-layout-column>
+
+  <nb-layout-footer fixed>
+    <!-- Insert footer here -->
+  </nb-layout-footer>
+</nb-layout>
