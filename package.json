@@ -24,6 +24,7 @@
     "@nebular/eva-icons": "5.0.0",
     "@nebular/theme": "^5.0.0",
     "bcryptjs": "^2.4.3",
+    "bootstrap": "^4.4.1",
     "cors": "^2.8.5",
     "eva-icons": "^1.1.2",
     "express": "^4.17.1",

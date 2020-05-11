@@ -25,9 +25,9 @@ async function signin(req, res) {
     });
   /** VALIDACIONES DE INGRESO */
 
-  if(jwt.verify("check", secret)){
-    console.log("check!");
-  }
+  // if(jwt.verify("check", secret)){
+  //   console.log("check!");
+  // }
   
   const token = jwt.sign({
       _id: users._id,
