@@ -9,11 +9,12 @@ const schemaUser = new mongoose.Schema({
       lastName: String
   },
   validateEmail:Boolean,
+  private_wallet: Array(),
   // profilePicture?: Buffer,
-  chestKey: {
+  chestKeys: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Chest'
-  }
+  }]
 },{
   timestamps:true
 });

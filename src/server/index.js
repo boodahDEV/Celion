@@ -3,8 +3,8 @@ const app = express();
 const cors = require('cors') // modulo para la facil integracion entre el servidor de angular y node
 const database = require('./config/database');
 
-const sha512 = require("./helper/crypto")
-sha512.generateAccessKeyForChest("boodah");
+// const sha512 = require("./helper/crypto")
+// sha512.generateAccessKeyForChest("boodah");
 
 
 app.use(cors());

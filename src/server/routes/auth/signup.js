@@ -7,18 +7,11 @@ const secret = require("../../config/config").secret;
 
 async function signup(req, res) {
   const keyPass = await crypto.generateKeyPassImput(req.body.password);
-  /**
-   *
-   * En los inicio, el chest_Key sera el mismo que la contrasena de secion
-   * ya que tengo planeado que tenga un baul publico (con la misma pass que el login) y
-   * el baul privado (con una key generada por el sistema de 6 digitos!)
-   *
-   */
+  var chestNew = CreateNewChest(); //crea un baul public de inicio no activado, solo con el fin de tener la instancia de uno.
 
-  var chestNew = CreateNewChest(keyPass);
   await chestNew.save(async function (err) {
     if (err) return res.status(401).json({
-      errors: err
+      error_chest: err
     });
     console.log("[\x1b[32mChest\x1b[0m] -> Make \x1b[33msuccessfully\x1b[0m saved.");
     //send to frontend that chest create successfully
@@ -31,12 +24,12 @@ async function signup(req, res) {
         lastName: req.body.lastname
       },
       validateEmail: false, // opcion de validacion validando su registro//     #+ PRONTO +#
-      chestKey: chestNew._id
+      chestKeys: [chestNew._id]
     });
 
     await usuarios.save(function (err) {
       if (err) return res.status(401).json({
-        errors: err
+        error_user: err
       });
       console.log("[\x1b[32mUser\x1b[0m]  -> \x1b[33mSuccessfully\x1b[0m saved.");
       console.log(`[\x1b[41mUser\x1b[0m]  -> \x1b[44m ${usuarios._id} \x1b[0m -> \x1b[41m EMAIL UNVALIDATED!\x1b[0m `);
@@ -52,9 +45,11 @@ async function signup(req, res) {
   }); //end save chest
 }
 
-function CreateNewChest(key) {
+function CreateNewChest() {
   return new chest({
-    chest_Key: key
+    _id: crypto.generateSHA512ForChest("Model-chest").join(""),
+    _type: "public chest",
+    active: false
   });
 }
 

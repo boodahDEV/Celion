@@ -8,8 +8,6 @@ const signin = require("./auth/signin").signin;
 
 // router.get("/", (req, res) => redir ); //test Router
 
-
-
 router.post(
   "/signup",
   [
@@ -33,8 +31,6 @@ router.post(
   }
 ); //fin de la ruta /signup
 
-
-
 router.post(
   "/signin",
   [
@@ -54,13 +50,9 @@ router.post(
     /**AQUI VA ALGO RESPECTO AL LOGIN */
     signin(req, res);
   }
-);//fin de /signup
+); //fin de /signup
 
-router.get("/chest",(req, res)=>{
-  
-});
-
-
+router.get("/chest", (req, res) => {});
 
 module.exports = router; // al final exporto las rutas al index principal
 

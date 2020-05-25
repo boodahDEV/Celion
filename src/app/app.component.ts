@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AuthService } from "./services/auth.service";
-import { NbMenuService } from '@nebular/theme';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +14,7 @@ export class AppComponent {
   ];
   userMenu = [ { title: 'Log out' } ];
 
-  constructor(private authService: AuthService , private menuService: NbMenuService){
+  constructor(private authService: AuthService){
     this.auth = authService
   }
 }

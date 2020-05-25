@@ -16,7 +16,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SettingComponent } from './components/setting/setting.component';
 import { PrivateChestsComponent } from './components/private-chests/private-chests.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbCardModule, NbIconModule, NbButtonModule, NbUserModule, NbActionsModule, NbSearchModule, NbContextMenuModule, NbMenuService } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbCardModule, NbIconModule, NbButtonModule, NbUserModule, NbActionsModule, NbSearchModule, NbContextMenuModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 
