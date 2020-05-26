@@ -5,7 +5,7 @@ const database = require('./config/database');
 
 // const sha512 = require("./helper/crypto")
 // sha512.generateAccessKeyForChest("boodah");
-
+//mongodb+srv://superuser-main:NEnTFezEryHgbuvv@cluster-main-puoah.gcp.mongodb.net/test?retryWrites=true&w=majority
 
 app.use(cors());
 app.use(express.json()); //Convierte los datos del servidor a objeto js
