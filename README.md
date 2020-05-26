@@ -8,8 +8,9 @@ Los baules de contrasenas son basados en 3 niveles de encriptacion, con el fin d
 
 
 ```diff
-# Version actual: 0.20.1 --> Nuevo despliegue en forma individual del servidor, 
-+                            separando un poco las logicas para sus despliegues.
+# Version actual: 0.20.1 
++     Nuevo despliegue en forma individual del servidor, 
++     separando un poco las logicas para sus despliegues.
 
 # Las solicitudes de extracción y aportes al desarrollo son bienvenidas.
 # boodah :)
